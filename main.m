@@ -1,24 +1,19 @@
-%  General 1D FE solver
-%  Author: Bryan Chem
+%  main
+%  Script will specify finite element space/mesh, material properties, and
+%  BCs and call oneDFE function
 
-%-------------------------   Parameters   --------------------------------%
+%  Generate mesh
+X
 
-%-------------------------------------------------------------------------%
+%  Material properties
+E = zeros(size(X)-1);
+rho = zeros(size(X)-1);
 
-%  Initialize data
+%  BCs
+bc = [1;0];
 
-%  Assemble global stiffness matrix
+%  Frequency
+omega = 0;
 
-%  Element wise stiffness
-
-%  Add to the global stiffness matrix
-
-%  Applying the boundary condition
-
-%  Assemble global mass matrix
-
-%  Multiply by the density
-    
-%  Application of boundary condition removes first column and row
-
-%  Solve system
+%  Solve for time-harmonic solution
+oneDFE(X, E, rho, omega, bcs)

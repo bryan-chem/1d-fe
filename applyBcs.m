@@ -1,5 +1,5 @@
 %  applyBcs
 
-function applyBcs(K,M,f,bcs)
-
+function applyBcs(K,f,bcs)
+    
 end

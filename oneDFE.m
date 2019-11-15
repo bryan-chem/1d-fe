@@ -10,11 +10,8 @@ f = zeros(ndofs);
 %  Assemble global stiffness matrix
 K = globalAssembleStiffness(X, E, ndofs);
 
-%  Assemble global mass matrix
-M = globalAssembleMass(X, rho, omega);
-
 %  Applying the boundary condition
-[K,M,f] = applyBcs(K,M,f,bcs);
+[K,M,f] = applyBcs(K,f,bcs);
     
 %  Solve system
 u = feSolve(K,M,f);

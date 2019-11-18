@@ -3,17 +3,20 @@
 %  BCs and call oneDFE function
 
 %  Generate mesh
-X
+X = [0:0.005:10];
 
 %  Material properties
-E = zeros(size(X)-1);
-rho = zeros(size(X)-1);
+E = ones(length(X)-1,1);
+E(X>4&X<6) = 1;
+rho = ones(length(X)-1,1);
+rho(X>4&X<6) = 1;
 
 %  BCs
-bc = [1;0];
+bcs = [1;0];
 
 %  Frequency
-omega = 0;
+f = 1;
+omega = 2*pi*f;
 
 %  Solve for time-harmonic solution
-oneDFE(X, E, rho, omega, bcs)
+u = oneDFE(X, E, rho, omega, bcs);

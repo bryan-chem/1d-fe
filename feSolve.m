@@ -1,6 +1,6 @@
 %  feSolve
 %  Solve a system of linear equations
 
-function feSolve(K,M,f)
-
+function u = feSolve(K,f)
+    u = K\f;
 end

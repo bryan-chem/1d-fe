@@ -4,16 +4,17 @@
 function u = oneDFE(X, E, rho, omega, bcs)
 
 %  Initialize
-ndofs = size(X);
-f = zeros(ndofs);
+ndofs = length(X);
+f = zeros(ndofs,1);
 
 %  Assemble global stiffness matrix
-K = globalAssembleStiffness(X, E, ndofs);
+K = globalAssembleStiffness(X, E, rho, omega, ndofs);
 
 %  Applying the boundary condition
-[K,M,f] = applyBcs(K,f,bcs);
+[K,f] = applyBcs(K,f,bcs);
     
 %  Solve system
-u = feSolve(K,M,f);
+u = feSolve(K,f);
 
+plot(X,[bcs(1);u;bcs(2)]);
 end
